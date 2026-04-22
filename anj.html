@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Portfolio</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    color: rgb(0, 0, 0);
+}
+
+.logo {
+    color: #ed92f0;
+    font-size: 22px;
+    font-weight: bold;
+}
+
+body {
+    color: #f7f2ef; /* your brown theme */
+}
+
+body {
+    margin: 0;
+    font-family: 'Times New Roman', Times, serif;
+    background: url("https://i.pinimg.com/control1/1200x/d2/68/e2/d268e2c4db37fa2829968419ebca1204.jpg") no-repeat center center fixed;
+    background-size: cover;
+    position: relative;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(66, 65, 65, 0.4); /* adjust darkness */
+    z-index: -1;
+}
+
+.nav-links a {
+    color: #333;
+}
+
+.nav-links a:hover {
+    color: #ed92f0;
+}
+
+nav {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    background: rgba(122, 91, 51, 0.829);
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    padding: 14px 20px;
+    z-index: 1000;
+}
+
+.nav-links a {
+    margin: 0 10px;
+    text-decoration: none;
+    font-weight: 600;
+    color: rgb(197, 174, 153);
+    cursor: pointer;
+}
+
+.nav-links a:hover {
+    color: white;
+}
+
+section {
+    display: none;
+    padding: 100px 20px;
+    text-align: center;
+    min-height: 100vh;
+}
+
+.active {
+    display: block;
+}
+
+
+.profile-box img {
+    width: 140px;
+    height: 140px;
+    object-fit: cover;
+    border-radius: 8px;
+    border: 4px solid #ffffff;
+    margin-bottom: 10px;
+}
+
+.resume-container {
+    background: #ffffff;
+    width: 80%;
+    max-width: 800px;
+    height: 80%;
+    border-radius: 10px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.resume-container iframe {
+    flex: 1;
+    width: 100%;
+    border: none;
+}
+
+.resume-btn {
+    display: inline-block;
+    padding: 10px 18px;
+    background: rgb(197, 174, 153);
+    color: black;
+    border-radius: 25px;
+    text-decoration: none;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.resume-btn:hover {
+    background: rgb(197, 174, 153);
+    color: white;
+    transform: translateY(-2px);
+}
+
+.download-btn {
+    padding: 12px;
+    text-align: center;
+    background: #6a6c6d;
+    color: rgb(255, 255, 255);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.download-btn:hover {
+    background: #6a6c6d;
+    color: white;
+}
+
+button {
+    padding: 10px 15px;
+    border: none;
+    background: #333;
+    color: white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #b6b3b3;
+}
+
+.about-box {
+    max-width: 600px;
+    margin: auto;
+    line-height: 1.6;
+    font-size: 18px;
+}
+
+.projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+}
+
+.pin {
+    background: white;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgb(197, 174, 153);
+    transition: 0.3s;
+}
+
+.pin:hover {
+    transform: translateY(-5px);
+}
+
+.pin img {
+    width: 100%;
+    height: 260px;
+    object-fit: cover;
+}
+
+.pin p {
+    padding: 10px;
+    font-weight: 600;
+}
+
+.pin button {
+    margin: 10px;
+    padding: 8px 12px;
+    border: none;
+    background: #6a6c6d;
+    color: rgb(255, 250, 250);
+    font-weight: 600;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.pin button:hover {
+    background: #6a6c6d;
+    color: white;
+}
+
+.pin span {
+    position: absolute;
+    background: #6a6c6d;
+    padding: 4px 8px;
+    top: 10px;
+    left: 10px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.contact-box {
+    max-width: 500px;
+    margin: auto;
+    line-height: 1.8;
+}
+
+.lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(32, 32, 32, 0.9);
+    justify-content: center;
+    align-items: center;
+    z-index: 2000;
+}
+
+.lightbox img {
+    max-width: 80%;
+    max-height: 70%;
+    border-radius: 10px;
+}
+
+.close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 35px;
+    color: rgb(0, 0, 0);
+    cursor: pointer;
+}
+</style>
+</head>
+
+<body>
+
+    <div class="logo">My Portfolio</div>
+
+    <nav>
+    <div><b>My Portfolio</b></div>
+    <div class="nav-links">
+        <a onclick="showSection('home')">Home</a>
+        <a onclick="showSection('about')">About</a>
+        <a onclick="showSection('projects')">Projects</a>
+        <a onclick="showSection('contact')">Contact</a>
+    </div>
+</nav>
+
+<section id="home" class="active">
+    <div class="profile-box">
+        <img src="profilepic.jpg" alt="Profile Picture">
+
+        <h2>Julie Angelene Santiago</h2>
+        <p>BSIT - 1 South 6</p>
+
+        <a class="resume-btn" onclick="openResume()">View Resume</a>
+    </div>
+</section>
+
+<section id="about">
+
+    <h1>About Me</h1>
+    <div class="about-box">
+        
+</section>
+
+<section id="projects">
+    <h1>My Projects</h1>
+
+    <div class="projects-grid">
+
+    <!-- IMAGE PROJECT -->
+    <div class="pin">
+        <img src="Brown Collage Retro Style Infographic.jpg">
+        <p>Project 1</p>
+        <button onclick="openLightbox('Brown Collage Retro Style Infographic.jpg')">View Project</button>
+    </div>
+
+    <!-- PDF PROJECT -->
+    <div class="pin">
+        <span>PDF</span>
+        <img src="mobile.pdf">
+        <p>Project 2</p>
+        <button onclick="openProject('mobile.pdf')">View Project</button>
+    </div>
+
+    <!-- PDF PROJECT -->
+    <div class="pin">
+        <span>PDF</span>
+        <img src="pc.pdf">
+        <p>Project 3</p>
+        <button onclick="openProject('project3.pdf')">View Project</button>
+    </div>
+
+</div>
+</section>
+
+<section id="contact">
+    <h1>Contact Me</h1>
+    <div class="contact-box">
+        
+        Email: yourname@example.com <br>
+        Facebook: facebook.com/yourprofile <br>
+        Phone: 09XXXXXXXXX
+    </div>
+</section>
+
+<div class="lightbox" id="resumeBox">
+    <div class="resume-container">
+
+        <span class="close" onclick="closeResume()">×</span>
+
+        <iframe src="resume.anj.pdf"></iframe>
+
+        <a href="resume.anj.pdf" download class="download-btn">
+            Download Resume
+        </a>
+
+    </div>
+</div><div class="lightbox" id="lightbox" onclick="closeLightbox()">
+    <span class="close">×</span>
+    <img id="lightboxImg">
+</div>
+
+<script>
+function showSection(id) {
+    document.querySelectorAll("section").forEach(sec => {
+        sec.classList.remove("active");
+    });
+    document.getElementById(id).classList.add("active");
+}
+
+function openLightbox(src) {
+    document.getElementById("lightbox").style.display = "flex";
+    document.getElementById("lightboxImg").src = src;
+}
+
+function closeLightbox() {
+    document.getElementById("lightbox").style.display = "none";
+}
+
+function openResume() {
+    document.getElementById("resumeBox").style.display = "flex";
+}
+
+function closeResume() {
+    document.getElementById("resumeBox").style.display = "none";
+}
+
+</script>
+
+</body>
+</html>
